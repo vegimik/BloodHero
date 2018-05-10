@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:title="All Donars"
+            android:checked="true"/>
+    </group>
+
+    <item android:title="Search by Group">
+        <menu>
+            <item
+                android:id="@+id/ap"
+                android:title="         A+" />
+            <item
+                android:id="@+id/an"
+                android:title="         A-" />
+            <item
+                android:id="@+id/bp"
+                android:title="         B+" />
+            <item
+                android:id="@+id/bn"
+                android:title="         B-" />
+            <item
+                android:id="@+id/op"
+                android:title="         O+" />
+            <item
+                android:id="@+id/on"
+                android:title="         O-" />
+            <item
+                android:id="@+id/abp"
+                android:title="         AB+" />
+            <item
+                android:id="@+id/abn"
+                android:title="         AB-" />
+        </menu>
+    </item>
+
+</menu>

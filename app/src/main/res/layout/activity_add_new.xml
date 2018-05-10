@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="amni.bloodbank.AddNew"
+    android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+            <TextView
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:id="@+id/dat"
+                android:text="Register as Donar"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:textColor="#FFF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:padding="8dp"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_marginTop="5dp"
+            android:hint="Your Name"
+            android:inputType="textPersonName"
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Blood Group    "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:id="@+id/blood"
+                android:entries="@array/blood"
+                android:textColor="#a9189d"
+                android:background="@drawable/textbox"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+        </LinearLayout>
+        <EditText
+            android:layout_marginTop="5dp"
+            android:hint="Phone"
+            android:id="@+id/phone"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_marginTop="5dp"
+            android:hint="City"
+            android:inputType="textPersonName"
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:background="@android:color/transparent"
+            android:hint="write your description here (Optional)"
+            android:padding="10dp"
+            android:textStyle="italic"
+            android:id="@+id/desc"
+            android:gravity="top|left"
+            android:minLines="1"
+            android:lines="50"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="120dp" />
+    </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/save"
+        android:tint="#FFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_menu_save" />
+</LinearLayout>
