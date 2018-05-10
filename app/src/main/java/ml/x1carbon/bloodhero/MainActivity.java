@@ -199,6 +199,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 feed.putExtra("tag","AB-");
                 startActivity(feed);
                 break;
+            case R.id.notifications_amd:
+                Intent notify=new Intent(MainActivity.this,Notifications.class);
+                startActivity(notify);
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

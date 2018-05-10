@@ -21,7 +21,8 @@
         <activity android:name=".ViewEntries" />
         <activity android:name=".AddNew" />
         <activity android:name=".Main2Activity" />
-        <activity android:name=".RegistrationActivity"></activity>
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".Notifications"></activity>
     </application>
 
 </manifest>

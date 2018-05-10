@@ -27,7 +27,6 @@ public class AddEntry {
     }
 
     public String getmAName() {return mAName;}
-
     public String getmBPhone() {return mBPhone;}
     public String getmCCity() {return mCCity;  }
     public String getmDBlood() {
