@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //getting artist
                     AddEntry artist = postSnapshot.getValue(AddEntry.class);
                     //adding artist to the list
                     artists.add(artist);

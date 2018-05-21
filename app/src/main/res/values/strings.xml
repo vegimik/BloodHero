@@ -37,4 +37,7 @@
     <string name="age">You should be 18+ to donate blood</string>
     <string name="date_of_birth_dd_mm_yyyy">Date of Birth (dd/mm/yyyy)</string>
     <string name="personal_details">Personal Details</string>
+
+
+
 </resources>
