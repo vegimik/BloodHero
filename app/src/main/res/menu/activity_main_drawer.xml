@@ -7,12 +7,22 @@
         android:icon="@drawable/ic_person_black_24dp"
         android:title="Profile" />
 
+    <item
+        android:id="@+id/dashboard_amd"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Dashboard" />
 
     <item
         android:id="@+id/notifications_amd"
         android:icon="@drawable/ic_notifications_active_black_24dp"
         android:title="Notifications"
         />
+    <item
+        android:id="@+id/useradd_amd"
+        android:icon="@drawable/ic_notifications_active_black_24dp"
+        android:title="useradd"
+        />
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/home"

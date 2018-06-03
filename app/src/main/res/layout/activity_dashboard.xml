@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Dashboard"
+    android:layout_weight="1"
+    android:stretchColumns="*">
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:weightSum="2">
+
+        <Button
+
+            android:foreground="@drawable/ic_favorite_border_black_24dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:paddingTop="16dp"
+            android:gravity="bottom"
+            android:textAlignment="center"
+            android:padding="6dp"
+            android:text="Request for Blood"
+            />
+
+
+        <Button
+
+            android:foreground="@drawable/ic_invert_colors_black_24dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:paddingTop="16dp"
+            android:gravity="bottom"
+            android:textAlignment="center"
+            android:padding="6dp"
+            android:text="Donate for Blood"
+            />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:weightSum="2">
+
+        <Button
+
+            android:foreground="@drawable/ic_favorite_black_24dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:paddingTop="16dp"
+            android:gravity="bottom"
+            android:textAlignment="center"
+            android:padding="6dp"
+            android:text="Blood Charts"
+            />
+
+
+        <Button
+
+            android:foreground="@drawable/ic_dashboard_black_24dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:paddingTop="16dp"
+            android:gravity="bottom"
+            android:textAlignment="center"
+            android:padding="6dp"
+            android:text="Blood Donation Benefits"
+            />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:weightSum="2"
+        >
+
+
+        <Button
+
+            android:foreground="@drawable/ic_dashboard_black_24dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:paddingTop="16dp"
+            android:gravity="bottom"
+            android:textAlignment="center"
+            android:padding="6dp"
+            android:text="Who can Donate"
+            />
+
+
+        <Button
+            android:id="@+id/amazingstories"
+            android:foreground="@drawable/ic_dashboard_black_24dp"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:paddingTop="16dp"
+            android:gravity="bottom"
+            android:textAlignment="center"
+            android:padding="6dp"
+            android:text="Amazing stories"
+            />
+    </TableRow>
+
+</TableLayout>
