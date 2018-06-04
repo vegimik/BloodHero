@@ -17,7 +17,7 @@ public class Dashboard extends AppCompatActivity {
         amazingstories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent amzstory=new Intent(getApplicationContext(),Mazingtories.class);
+                Intent amzstory=new Intent(getApplicationContext(),Main2Activity.class);
                 startActivity(amzstory);
             }
         });

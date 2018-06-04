@@ -53,13 +53,6 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-
-//                String sname=name.getText().toString();
-//                String sblood=spinner.getSelectedItem().toString();
-//                String sphone=phone.getText().toString();
-//                String scity=city.getText().toString();
-//                String sdesc=desc.getText().toString();
-
                 String sname= givenname.getText().toString();
                 String ssurname= surname.getText().toString();
                 String sdob= dob.getText().toString();
