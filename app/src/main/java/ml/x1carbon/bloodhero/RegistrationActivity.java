@@ -1,42 +1,61 @@
 package ml.x1carbon.bloodhero;
 
+import android.app.DatePickerDialog;
+import android.app.DialogFragment;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegistrationActivity extends AppCompatActivity {
-    private DatabaseReference mFirebaseDatabase;
+    //private DatabaseReference mFirebaseDatabase;
     Button register;
     RadioGroup gender;
     RadioButton male, female, otherratio;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        register=(Button)findViewById(R.id.register);
-        gender=(RadioGroup)findViewById(R.id.gender);
-        male=(RadioButton)findViewById(R.id.maleradio);
-        female=(RadioButton)findViewById(R.id.femaleradio);
-        otherratio=(RadioButton)findViewById(R.id.otherradio);
+        register    =(Button)findViewById(R.id.register);
+        gender      =(RadioGroup)findViewById(R.id.gender);
+        male        =(RadioButton)findViewById(R.id.maleradio);
+        female      =(RadioButton)findViewById(R.id.femaleradio);
+        otherratio  =(RadioButton)findViewById(R.id.otherradio);
 
-        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("user");
+
+
+        //mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("user");
 //        FloatingActionButton save= (FloatingActionButton) findViewById(R.id.save);
         final EditText givenname= (EditText) findViewById(R.id.givenname);
         final EditText surname= (EditText) findViewById(R.id.surname);
-        final EditText dob= (EditText) findViewById(R.id.dob);
+        //final EditText dob= (EditText) findViewById(R.id.dob);
         final Spinner bloodgroup= (Spinner) findViewById(R.id.bloodgroup);
         final EditText phone= (EditText) findViewById(R.id.phone);
         final EditText email= (EditText) findViewById(R.id.email);
@@ -46,6 +65,12 @@ public class RegistrationActivity extends AppCompatActivity {
         final EditText postcode= (EditText) findViewById(R.id.postcode);
         final EditText loginname= (EditText) findViewById(R.id.loginname);
         final EditText password= (EditText) findViewById(R.id.password);
+        final EditText confirmPassword=(EditText) findViewById(R.id.confirmpass);
+        final EditText dateOfBirth=(EditText) findViewById(R.id.datePicker);
+
+
+
+
 
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -53,31 +78,122 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                String sname= givenname.getText().toString();
-                String ssurname= surname.getText().toString();
-                String sdob= dob.getText().toString();
-                String genderMF="";
-                if (gender.getCheckedRadioButtonId()==male.getId())
-                {
-                    genderMF= male.getText().toString();
+                String sname = givenname.getText().toString().trim();
+                String ssurname = surname.getText().toString().trim();
+                //String sdob= dob.getText().toString().trim();
+                String genderMF = "";
+
+                if (gender.getCheckedRadioButtonId() == male.getId()) {
+                    genderMF = male.getText().toString().trim();
+                } else if (gender.getCheckedRadioButtonId() == female.getId()) {
+                    genderMF = female.getText().toString().trim();
+                } else {
+                    genderMF = otherratio.getText().toString().trim();
                 }
-                else if (gender.getCheckedRadioButtonId()==female.getId())
-                {
-                    genderMF= female.getText().toString();
+                String sspinner = bloodgroup.getSelectedItem().toString().trim();
+                String sphone = phone.getText().toString().trim();
+                String semail = email.getText().toString().trim();
+                String sstreetname = streetname.getText().toString().trim();
+                String ssuburb = suburb.getText().toString().trim();
+                String scity = city.getText().toString().trim();
+                String spostcode = postcode.getText().toString().trim();
+                String sloginname = loginname.getText().toString().trim();
+                String spassword = password.getText().toString().trim();
+                String sconfirmPass=confirmPassword.getText().toString().trim();
+
+
+                if (sname.isEmpty()) {
+                    givenname.setError("Name is required!");
+                    givenname.requestFocus();
+                    return;
+
                 }
-                else
-                {
-                    genderMF= otherratio.getText().toString();
+
+                if (ssurname.isEmpty()) {
+                    surname.setError("Surname is required");
+                    surname.requestFocus();
+                    return;
                 }
-                String sspinner= bloodgroup.getSelectedItem().toString();
-                String sphone= phone.getText().toString();
-                String semail= email.getText().toString();
-                String sstreetname= streetname.getText().toString();
-                String ssuburb= suburb.getText().toString();
-                String scity= city.getText().toString();
-                String spostcode= postcode.getText().toString();
-                String sloginname= loginname.getText().toString();
-                String spassword= password.getText().toString();
+
+                /*if(sdob.isEmpty()){
+                    dob.setError("Date of birth is required!");
+                    dob.requestFocus();
+                    return;
+                }*/
+
+                if (sphone.isEmpty()) {
+                    phone.setError("Phone number is required!");
+                    phone.requestFocus();
+                    return;
+                }
+
+                if (!semail.isEmpty()) {
+
+                    Pattern regexPattern;
+                    Matcher regMatcher;
+                    regexPattern = Pattern.compile("^[(a-zA-Z-0-9-\\_\\+\\.)]+@[(a-z-A-z)]+\\.[(a-zA-z)]{2,3}$");
+                    regMatcher = regexPattern.matcher(semail);
+                    if (!regMatcher.matches()) {
+                        email.setError("Email format is not correct");
+                        email.requestFocus();
+                        return;
+                    }
+
+                } else if (semail.isEmpty()) {
+                    email.setError("Email is required!");
+                    email.requestFocus();
+                    return;
+                }
+
+                if (sstreetname.isEmpty()) {
+                    streetname.setError("Streetname is required!");
+                    streetname.requestFocus();
+                    return;
+                }
+
+                if (scity.isEmpty()) {
+                    city.setError("Email is required!");
+                    city.requestFocus();
+                    return;
+                }
+
+                if (sloginname.isEmpty()) {
+                    loginname.setError("Login credentials are required!");
+                    loginname.requestFocus();
+                    return;
+                }
+
+                if (!spassword.isEmpty()) {
+                    Pattern regexPattern;
+                    Matcher regMatcher;
+                    regexPattern = Pattern.compile("(?=.*[a-z])(?=.*d)(?=.*[~!@#$%^&*_])(?=.*[A-Z]).{6,16}");
+                    regMatcher = regexPattern.matcher(spassword);
+                    if (!regMatcher.matches()) {
+                        password.setError("Passord must be 6-16 characters,must contain at least one capital letter, a number and a special character (ex:~!@#$%^&*_)");
+                        password.requestFocus();
+                        return;
+                    }
+                } else if (spassword.isEmpty()) {
+                    password.setError("Password is required!");
+                    password.requestFocus();
+                    return;
+                }
+
+                if(!spassword.equals(sconfirmPass))
+                {
+                    confirmPassword.setError("Password is not confirmed!");
+                    confirmPassword.requestFocus();
+                    return;
+                }
+            }
+        });
+    }
+
+}
+
+
+
+/*
 
 
                 String id = mFirebaseDatabase.push().getKey();
@@ -100,6 +216,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 }
 
+*/
 
 //package ml.x1carbon.bloodhero;
 //
@@ -175,4 +292,4 @@ public class RegistrationActivity extends AppCompatActivity {
 //        });
 //
 //    }
-//}
+

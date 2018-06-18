@@ -15,12 +15,24 @@
       },
       "oauth_client": [
         {
+          "client_id": "264863460449-7cej2sf9tuuo9cnqmgimk65vu4fkftc8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ml.x1carbon.bloodhero",
+            "certificate_hash": "245eb9d20a16e68939e7d16e4c682f3c9a02ba1c"
+          }
+        },
+        {
           "client_id": "264863460449-pv0j1taeu87k8n1blhaj64frbqjtbslb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "ml.x1carbon.bloodhero",
             "certificate_hash": "80fc4ce7389f50c1181c5411a58759fd1422261c"
           }
+        },
+        {
+          "client_id": "264863460449-l5qqbcuusht28qf4simevgo19kuaimqa.apps.googleusercontent.com",
+          "client_type": 3
         },
         {
           "client_id": "264863460449-l5qqbcuusht28qf4simevgo19kuaimqa.apps.googleusercontent.com",
