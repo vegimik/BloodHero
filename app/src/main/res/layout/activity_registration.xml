@@ -192,12 +192,12 @@
             android:text="Login Details" />
 
         <EditText
-            android:id="@+id/loginname"
+            android:id="@+id/confirmEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Username"
-            android:inputType="textPersonName" />
+            android:hint="Confirm email"
+            android:inputType="textEmailAddress" />
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
@@ -237,7 +237,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginRight="16dp"
             android:layout_gravity="right"
-            android:background="@android:color/holo_red_dark"
+            android:background="@color/colorPrimary"
             android:text="Register"
             />
 

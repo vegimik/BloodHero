@@ -32,7 +32,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
     private ListView resultview;
+
     List<AddEntry> artists;
     DatabaseReference databaseArtists;
 

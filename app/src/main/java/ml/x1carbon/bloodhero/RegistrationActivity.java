@@ -1,40 +1,46 @@
 package ml.x1carbon.bloodhero;
 
-import android.app.DatePickerDialog;
-import android.app.DialogFragment;
-import android.app.ProgressDialog;
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegistrationActivity extends AppCompatActivity {
+
+
+public class RegistrationActivity extends Activity {
+    public static final String TAG=RegistrationActivity.class.getSimpleName();
+
     //private DatabaseReference mFirebaseDatabase;
     Button register;
     RadioGroup gender;
     RadioButton male, female, otherratio;
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+
+
+
+
+
+
 
 
 
@@ -42,6 +48,12 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        Intent intent=getIntent();
+        String name=intent.getStringExtra( "name" );
+        if (name==null){
+            name="Friend";
+        }
+        Log.d( TAG,name );
 
         register    =(Button)findViewById(R.id.register);
         gender      =(RadioGroup)findViewById(R.id.gender);
@@ -49,7 +61,7 @@ public class RegistrationActivity extends AppCompatActivity {
         female      =(RadioButton)findViewById(R.id.femaleradio);
         otherratio  =(RadioButton)findViewById(R.id.otherradio);
 
-
+        mAuth = FirebaseAuth.getInstance();
 
         //mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("user");
 //        FloatingActionButton save= (FloatingActionButton) findViewById(R.id.save);
@@ -63,7 +75,7 @@ public class RegistrationActivity extends AppCompatActivity {
         final EditText suburb= (EditText) findViewById(R.id.suburb);
         final EditText city= (EditText) findViewById(R.id.city);
         final EditText postcode= (EditText) findViewById(R.id.postcode);
-        final EditText loginname= (EditText) findViewById(R.id.loginname);
+        final EditText confirmEmail= (EditText) findViewById(R.id.confirmEmail);
         final EditText password= (EditText) findViewById(R.id.password);
         final EditText confirmPassword=(EditText) findViewById(R.id.confirmpass);
         final EditText dateOfBirth=(EditText) findViewById(R.id.datePicker);
@@ -97,7 +109,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String ssuburb = suburb.getText().toString().trim();
                 String scity = city.getText().toString().trim();
                 String spostcode = postcode.getText().toString().trim();
-                String sloginname = loginname.getText().toString().trim();
+                String sconfirmEmail = confirmEmail.getText().toString().trim();
                 String spassword = password.getText().toString().trim();
                 String sconfirmPass=confirmPassword.getText().toString().trim();
 
@@ -127,23 +139,20 @@ public class RegistrationActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (!semail.isEmpty()) {
-
-                    Pattern regexPattern;
-                    Matcher regMatcher;
-                    regexPattern = Pattern.compile("^[(a-zA-Z-0-9-\\_\\+\\.)]+@[(a-z-A-z)]+\\.[(a-zA-z)]{2,3}$");
-                    regMatcher = regexPattern.matcher(semail);
-                    if (!regMatcher.matches()) {
-                        email.setError("Email format is not correct");
-                        email.requestFocus();
-                        return;
-                    }
-
-                } else if (semail.isEmpty()) {
+                if (semail.isEmpty()) {
                     email.setError("Email is required!");
                     email.requestFocus();
                     return;
                 }
+
+                if (!Patterns.EMAIL_ADDRESS.matcher( semail ).matches()) {
+
+                        email.setError("Email format is not correct");
+                        email.requestFocus();
+
+                    }
+
+
 
                 if (sstreetname.isEmpty()) {
                     streetname.setError("Streetname is required!");
@@ -157,9 +166,15 @@ public class RegistrationActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (sloginname.isEmpty()) {
+                /*if (sloginname.isEmpty()) {
                     loginname.setError("Login credentials are required!");
                     loginname.requestFocus();
+                    return;
+                }*/
+
+                if(!semail.equals(sconfirmEmail)){
+                    confirmEmail.setError( "Email is not confirmed,please check!" );
+                    confirmEmail.requestFocus();
                     return;
                 }
 
@@ -185,9 +200,26 @@ public class RegistrationActivity extends AppCompatActivity {
                     confirmPassword.requestFocus();
                     return;
                 }
+
+                mAuth.createUserWithEmailAndPassword( semail,spassword ).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText( getApplicationContext(),"Registration is completed",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                } );
+
+
             }
         });
-    }
+
+
+
+}
+
+
+
 
 }
 
