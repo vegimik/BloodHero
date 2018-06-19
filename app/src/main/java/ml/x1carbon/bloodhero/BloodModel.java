@@ -10,9 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 
-/**
- * Created by Belal on 2/26/2017.
- */
+
 
 public class BloodModel extends ArrayAdapter<AddEntry> {
 

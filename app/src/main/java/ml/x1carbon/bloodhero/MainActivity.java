@@ -42,6 +42,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        getSupportActionBar().hide();
+//        getActionBar().hide();
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         databaseArtists = FirebaseDatabase.getInstance().getReference("messages");

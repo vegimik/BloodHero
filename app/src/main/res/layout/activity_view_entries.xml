@@ -5,7 +5,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
-tools:context="amni.bloodbank.ViewEntries">
+tools:context=".ViewEntries">
 <android.support.design.widget.AppBarLayout
     android:layout_gravity="top"
     android:layout_width="match_parent"
@@ -15,7 +15,8 @@ tools:context="amni.bloodbank.ViewEntries">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
         <TextView
             android:gravity="center"
             android:layout_marginTop="10dp"

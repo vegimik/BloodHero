@@ -19,7 +19,6 @@ import java.util.List;
 
 
 
-/* ------------Created by Manigandan S. on February 25,2018----------------*/
 
 public class Tags extends AppCompatActivity {
     private ArrayList<String> result=new ArrayList<>();

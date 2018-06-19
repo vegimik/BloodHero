@@ -3,7 +3,10 @@ package ml.x1carbon.bloodhero;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ViewEntries extends AppCompatActivity {
     TextView t1,t2,t3,t4,t5;
@@ -11,6 +14,20 @@ public class ViewEntries extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_entries);
+
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+//        toolbar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(ViewEntries.this, "Ketu wego in this bitch", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
         t1= (TextView) findViewById(R.id.blood);
         t2= (TextView) findViewById(R.id.name);
         t3=(TextView)findViewById(R.id.phone);
@@ -27,6 +44,7 @@ public class ViewEntries extends AppCompatActivity {
         t3.setText(ph);
         t4.setText(cit);
         t5.setText(de);
+
 
     }
 }

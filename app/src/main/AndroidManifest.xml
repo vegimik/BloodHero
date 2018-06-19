@@ -11,24 +11,31 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SearchByCity" />
-        <activity android:name=".Tags" />
-        <activity android:name=".ViewEntries" />
-        <activity android:name=".AddNew" />
+        <activity android:name=".Tags"/>
+        <activity
+            android:name=".ViewEntries"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.ActionBar"/>
+        <activity android:name=".AddNew"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.ActionBar"/>
         <activity android:name=".Main2Activity" />
         <activity android:name=".RegistrationActivity">
 
         </activity>
         <activity android:name=".LoginActivity" >
+
+        </activity>
+        <activity android:name=".Dashboard"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.ActionBar"/>
+
+        <activity android:name=".StartApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".Dashboard" />
-
-        <activity android:name=".StartApp">
-
         </activity>
     </application>
 

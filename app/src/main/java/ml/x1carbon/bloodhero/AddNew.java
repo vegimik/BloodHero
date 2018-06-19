@@ -17,6 +17,11 @@ public class AddNew extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new);
+
+        getSupportActionBar().setTitle("Add new");
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("messages");
         FloatingActionButton save= (FloatingActionButton) findViewById(R.id.save);
         final EditText name= (EditText) findViewById(R.id.name);

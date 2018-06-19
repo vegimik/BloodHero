@@ -37,6 +37,11 @@
     <string name="age">You should be 18+ to donate blood</string>
     <string name="date_of_birth_dd_mm_yyyy">Date of Birth (dd/mm/yyyy)</string>
     <string name="personal_details">Personal Details</string>
+    <string name="title_activity_per_testime3">PerTESTIME3Activity</string>
+    <string name="title_activity_main3">Main3Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 
     <!--<string name="action_sign_in_short">Register</string>-->

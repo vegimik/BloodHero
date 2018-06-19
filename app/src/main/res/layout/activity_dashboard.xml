@@ -19,7 +19,7 @@
             android:id="@+id/btnrequest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:foreground="@drawable/bloodrequest"
+            android:foreground="@drawable/ic_dashboard_black_24dp"
             android:background="@color/fbutton_color_pomegranate"
             android:paddingTop="16dp"
             android:padding="6dp"
@@ -28,7 +28,7 @@
             />
 
         <Button
-            android:foreground="@drawable/blooddonation"
+            android:foreground="@drawable/ic_dashboard_black_24dp"
             android:background="@color/fbutton_color_pomegranate"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
@@ -60,10 +60,11 @@
         android:weightSum="2">
 
         <Button
-            android:foreground="@drawable/medicalhistory"
+            android:foreground="@drawable/ic_dashboard_black_24dp"
             android:background="@color/fbutton_color_pomegranate"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
+            android:id="@+id/adBtnStatistic"
             android:paddingTop="16dp"
             android:gravity="bottom"
             android:textAlignment="center"
@@ -72,8 +73,8 @@
 
 
         <Button
-            android:foreground="@drawable/healthcare"
-            android:background="@color/fbutton_color_pomegranate"
+            android:foreground="@drawable/ic_dashboard_black_24dp"
+            android:background="@color/colorPrimary"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:paddingTop="16dp"
@@ -101,7 +102,7 @@
 
 
         <Button
-            android:foreground="@drawable/bloodneed"
+            android:foreground="@drawable/ic_dashboard_black_24dp"
             android:background="@color/fbutton_color_pomegranate"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
@@ -114,7 +115,7 @@
 
         <Button
             android:id="@+id/amazingstories"
-            android:foreground="@drawable/heart"
+            android:foreground="@drawable/ic_dashboard_black_24dp"
             android:background="@color/fbutton_color_pomegranate"
             android:layout_height="match_parent"
             android:layout_width="match_parent"

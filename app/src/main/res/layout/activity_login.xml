@@ -48,7 +48,7 @@
                     android:fadingEdgeLength="20dp"
                     android:drawableTint="@color/fbutton_color_pomegranate"
                     android:hint="User Name"
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
 

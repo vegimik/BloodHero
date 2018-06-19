@@ -1,7 +1,10 @@
 package ml.x1carbon.bloodhero;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +12,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -20,6 +24,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,8 +35,9 @@ import java.util.regex.Pattern;
 public class RegistrationActivity extends Activity {
     public static final String TAG=RegistrationActivity.class.getSimpleName();
 
-    //private DatabaseReference mFirebaseDatabase;
+    private DatabaseReference mFirebaseDatabase;
     Button register;
+    CheckBox checkBoxDev;
     RadioGroup gender;
     RadioButton male, female, otherratio;
     private FirebaseAuth mAuth;
@@ -48,22 +55,23 @@ public class RegistrationActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        Intent intent=getIntent();
-        String name=intent.getStringExtra( "name" );
-        if (name==null){
-            name="Friend";
-        }
-        Log.d( TAG,name );
+//        Intent intent=getIntent();
+//        String name=intent.getStringExtra( "name" );
+//        if (name==null){
+//            name="Friend";
+//        }
+//        Log.d( TAG,name );
 
         register    =(Button)findViewById(R.id.register);
+        checkBoxDev    =(CheckBox) findViewById(R.id.chbTestim);
         gender      =(RadioGroup)findViewById(R.id.gender);
         male        =(RadioButton)findViewById(R.id.maleradio);
         female      =(RadioButton)findViewById(R.id.femaleradio);
         otherratio  =(RadioButton)findViewById(R.id.otherradio);
 
-        mAuth = FirebaseAuth.getInstance();
+//        mAuth = FirebaseAuth.getInstance();
 
-        //mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("user");
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("user");
 //        FloatingActionButton save= (FloatingActionButton) findViewById(R.id.save);
         final EditText givenname= (EditText) findViewById(R.id.givenname);
         final EditText surname= (EditText) findViewById(R.id.surname);
@@ -75,7 +83,7 @@ public class RegistrationActivity extends Activity {
         final EditText suburb= (EditText) findViewById(R.id.suburb);
         final EditText city= (EditText) findViewById(R.id.city);
         final EditText postcode= (EditText) findViewById(R.id.postcode);
-        final EditText confirmEmail= (EditText) findViewById(R.id.confirmEmail);
+        final EditText loginName= (EditText) findViewById(R.id.loginName);
         final EditText password= (EditText) findViewById(R.id.password);
         final EditText confirmPassword=(EditText) findViewById(R.id.confirmpass);
         final EditText dateOfBirth=(EditText) findViewById(R.id.datePicker);
@@ -109,107 +117,47 @@ public class RegistrationActivity extends Activity {
                 String ssuburb = suburb.getText().toString().trim();
                 String scity = city.getText().toString().trim();
                 String spostcode = postcode.getText().toString().trim();
-                String sconfirmEmail = confirmEmail.getText().toString().trim();
+                String sloginname = loginName.getText().toString().trim();
                 String spassword = password.getText().toString().trim();
                 String sconfirmPass=confirmPassword.getText().toString().trim();
 
 
-                if (sname.isEmpty()) {
-                    givenname.setError("Name is required!");
-                    givenname.requestFocus();
-                    return;
-
-                }
-
-                if (ssurname.isEmpty()) {
-                    surname.setError("Surname is required");
-                    surname.requestFocus();
-                    return;
-                }
-
-                /*if(sdob.isEmpty()){
-                    dob.setError("Date of birth is required!");
-                    dob.requestFocus();
-                    return;
-                }*/
-
-                if (sphone.isEmpty()) {
-                    phone.setError("Phone number is required!");
-                    phone.requestFocus();
-                    return;
-                }
-
-                if (semail.isEmpty()) {
-                    email.setError("Email is required!");
-                    email.requestFocus();
-                    return;
-                }
-
-                if (!Patterns.EMAIL_ADDRESS.matcher( semail ).matches()) {
-
-                        email.setError("Email format is not correct");
-                        email.requestFocus();
-
-                    }
-
-
-
-                if (sstreetname.isEmpty()) {
-                    streetname.setError("Streetname is required!");
-                    streetname.requestFocus();
-                    return;
-                }
-
-                if (scity.isEmpty()) {
-                    city.setError("Email is required!");
-                    city.requestFocus();
-                    return;
-                }
-
-                /*if (sloginname.isEmpty()) {
-                    loginname.setError("Login credentials are required!");
-                    loginname.requestFocus();
-                    return;
-                }*/
-
-                if(!semail.equals(sconfirmEmail)){
-                    confirmEmail.setError( "Email is not confirmed,please check!" );
-                    confirmEmail.requestFocus();
-                    return;
-                }
-
-                if (!spassword.isEmpty()) {
-                    Pattern regexPattern;
-                    Matcher regMatcher;
-                    regexPattern = Pattern.compile("(?=.*[a-z])(?=.*d)(?=.*[~!@#$%^&*_])(?=.*[A-Z]).{6,16}");
-                    regMatcher = regexPattern.matcher(spassword);
-                    if (!regMatcher.matches()) {
-                        password.setError("Passord must be 6-16 characters,must contain at least one capital letter, a number and a special character (ex:~!@#$%^&*_)");
-                        password.requestFocus();
-                        return;
-                    }
-                } else if (spassword.isEmpty()) {
-                    password.setError("Password is required!");
-                    password.requestFocus();
-                    return;
-                }
-
-                if(!spassword.equals(sconfirmPass))
+                if (checkBoxDev.isChecked())
                 {
-                    confirmPassword.setError("Password is not confirmed!");
-                    confirmPassword.requestFocus();
-                    return;
+                    Intent home=new Intent(RegistrationActivity.this,MainActivity.class);
+                    startActivity(home);
+                    finish();
+
                 }
+                else
+                {
+                    String id = mFirebaseDatabase.push().getKey();
 
-                mAuth.createUserWithEmailAndPassword( semail,spassword ).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText( getApplicationContext(),"Registration is completed",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                } );
+                    AddUser useri=new AddUser(sname, ssurname, "10/10/2018", genderMF, sspinner, sphone, semail, sstreetname, ssuburb, scity, spostcode, sloginname, spassword, id);
+                    mFirebaseDatabase.child(id).setValue(useri);
 
+                    //SQLite Database
+                    SQLiteDatabase db=(new Databaza(RegistrationActivity.this)).getWritableDatabase();
+                    ContentValues cv = new ContentValues();
+                    cv.put("Perdoruesi", sloginname);
+                    cv.put("Passwordi", spassword);
+                    cv.put("Aktiv", "0");
+                    long rezultati = db.insert("Perdoruesit1",null,cv);
+                    if(rezultati>0)
+                        Toast.makeText(RegistrationActivity.this, "Te dhenat u ruajten me sukses ne SQLiteDatabase!", Toast.LENGTH_LONG).show();
+
+
+
+                    final ProgressDialog progressDialog = new ProgressDialog(RegistrationActivity.this, R.style.AppTheme);//nderrova AppTheme_Dark_Dialog);
+                    progressDialog.setIndeterminate(true);
+                    progressDialog.setTitle("Connecting..");
+                    progressDialog.setMessage("Authenticating...");
+                    progressDialog.show();
+
+                    Intent home=new Intent(RegistrationActivity.this,LoginActivity.class);
+                    startActivity(home);
+                    finish();
+                }
 
             }
         });
@@ -222,6 +170,13 @@ public class RegistrationActivity extends Activity {
 
 
 }
+
+
+
+
+
+//*****   =>>   Pjesa ku kemi nje pjese te pune me poshte **********
+
 
 
 
@@ -325,3 +280,109 @@ public class RegistrationActivity extends Activity {
 //
 //    }
 
+
+
+
+
+/// ARBERI
+//
+//
+//
+//                if (sname.isEmpty()) {
+//                    givenname.setError("Name is required!");
+//                    givenname.requestFocus();
+//                    return;
+//
+//                }
+//
+//                if (ssurname.isEmpty()) {
+//                    surname.setError("Surname is required");
+//                    surname.requestFocus();
+//                    return;
+//                }
+//
+//                /*if(sdob.isEmpty()){
+//                    dob.setError("Date of birth is required!");
+//                    dob.requestFocus();
+//                    return;
+//                }*/
+//
+//                if (sphone.isEmpty()) {
+//                        phone.setError("Phone number is required!");
+//                        phone.requestFocus();
+//                        return;
+//                        }
+//
+//                        if (semail.isEmpty()) {
+//                        email.setError("Email is required!");
+//                        email.requestFocus();
+//                        return;
+//                        }
+//
+//                        if (!Patterns.EMAIL_ADDRESS.matcher( semail ).matches()) {
+//
+//                        email.setError("Email format is not correct");
+//                        email.requestFocus();
+//
+//                        }
+//
+//
+//
+//                        if (sstreetname.isEmpty()) {
+//                        streetname.setError("Streetname is required!");
+//                        streetname.requestFocus();
+//                        return;
+//                        }
+//
+//                        if (scity.isEmpty()) {
+//                        city.setError("Email is required!");
+//                        city.requestFocus();
+//                        return;
+//                        }
+//
+//                /*if (sloginname.isEmpty()) {
+//                    loginname.setError("Login credentials are required!");
+//                    loginname.requestFocus();
+//                    return;
+//                }*/
+//
+//                        if(!semail.equals(sconfirmEmail)){
+//                        confirmEmail.setError( "Email is not confirmed,please check!" );
+//                        confirmEmail.requestFocus();
+//                        return;
+//                        }
+//
+//                        if (!spassword.isEmpty()) {
+//                        Pattern regexPattern;
+//                        Matcher regMatcher;
+//                        regexPattern = Pattern.compile("(?=.*[a-z])(?=.*d)(?=.*[~!@#$%^&*_])(?=.*[A-Z]).{6,16}");
+//                        regMatcher = regexPattern.matcher(spassword);
+//                        if (!regMatcher.matches()) {
+//                        password.setError("Passord must be 6-16 characters,must contain at least one capital letter, a number and a special character (ex:~!@#$%^&*_)");
+//                        password.requestFocus();
+//                        return;
+//                        }
+//                        } else if (spassword.isEmpty()) {
+//                        password.setError("Password is required!");
+//                        password.requestFocus();
+//                        return;
+//                        }
+//
+//                        if(!spassword.equals(sconfirmPass))
+//                        {
+//                        confirmPassword.setError("Password is not confirmed!");
+//                        confirmPassword.requestFocus();
+//                        return;
+//                        }
+//
+//                        mAuth.createUserWithEmailAndPassword( semail,spassword ).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+//@Override
+//public void onComplete(@NonNull Task<AuthResult> task) {
+//        if (task.isSuccessful()) {
+//        Toast.makeText( getApplicationContext(),"Registration is completed",Toast.LENGTH_SHORT).show();
+//        }
+//        }
+//        } );
+//
+//
+// */

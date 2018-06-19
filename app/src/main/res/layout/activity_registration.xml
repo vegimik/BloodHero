@@ -23,6 +23,14 @@
             android:layout_height="wrap_content" />
 
     </android.support.design.widget.AppBarLayout>
+
+    <CheckBox
+        android:id="@+id/chbTestim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duke testuar"
+        android:layout_gravity="right"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -192,11 +200,11 @@
             android:text="Login Details" />
 
         <EditText
-            android:id="@+id/confirmEmail"
+            android:id="@+id/loginName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Confirm email"
+            android:hint="Login Name"
             android:inputType="textEmailAddress" />
         <EditText
             android:id="@+id/password"
