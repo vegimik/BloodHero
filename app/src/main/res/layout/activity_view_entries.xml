@@ -20,8 +20,20 @@ tools:context=".ViewEntries">
         <TextView
             android:gravity="center"
             android:layout_marginTop="10dp"
+            android:text="Blood type:"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_margin="16dp"
+            android:textColor="#FFF"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:gravity="center"
+            android:layout_marginTop="10dp"
             android:id="@+id/blood"
             android:text="Blood"
+            android:layout_margin="16dp"
             android:textStyle="bold"
             android:textSize="20dp"
             android:textColor="#FFF"
@@ -35,59 +47,133 @@ tools:context=".ViewEntries">
     android:padding="12dp"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
-    <LinearLayout
+
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:stretchColumns="*">
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:weightSum="2">
         <TextView
-            android:gravity="center"
-            android:id="@+id/name"
+            android:gravity="right"
             android:textColor="#000"
-            android:padding="12dp"
-            android:text="Name"
+            android:paddingHorizontal="16dp"
+            android:text="Name: "
             android:textSize="20dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
         <TextView
-            android:visibility="gone"
-            android:textSize="16dp"
-            android:id="@+id/tit"
-            android:layout_width="fill_parent"
+            android:id="@+id/name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:textStyle="italic"
-            android:text="title"/>
+            android:gravity="left"
+            android:paddingHorizontal="16dp"
+            android:text="Name"
+            android:textColor="#000"
+            android:textSize="20dp" />
+    </TableRow>
+        <!--<TextView-->
+            <!--android:visibility="gone"-->
+            <!--android:textSize="16dp"-->
+            <!--android:id="@+id/tit"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="5dp"-->
+            <!--android:textStyle="italic"-->
+            <!--android:text="title"/>-->
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
             android:layout_height="10dp" />
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="2">
+
         <TextView
-            android:gravity="center"
+            android:gravity="right"
+            android:textSize="26dp"
+            android:paddingHorizontal="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone:"/>
+
+        <TextView
+            android:gravity="left"
             android:id="@+id/phone"
             android:textSize="26dp"
+            android:paddingHorizontal="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Phone"/>
+
+        </TableRow>
+
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
             android:layout_height="10dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="2">
+
         <TextView
-            android:gravity="center"
+            android:gravity="right"
+            android:textSize="18dp"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="City: "/>
+
+        <TextView
+            android:gravity="left"
             android:id="@+id/city"
             android:textSize="18dp"
+            android:paddingHorizontal="16dp"
             android:textColor="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="City"/>
+
+        </TableRow>
+
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="2">
+
+        <TextView
+            android:text="Desc: "
+            android:textSize="20dp"
+            android:paddingHorizontal="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"/>
+
         <TextView
             android:id="@+id/desc"
             android:textSize="20dp"
+            android:paddingHorizontal="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"/>
+        </TableRow>
+    </TableLayout>
 
-    </LinearLayout>
 </ScrollView>
 
 </LinearLayout>

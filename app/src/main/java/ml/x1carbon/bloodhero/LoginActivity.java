@@ -1,5 +1,6 @@
 package ml.x1carbon.bloodhero;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,9 +33,10 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG=RegistrationActivity.class.getSimpleName();
-     TextView forgotPass;//=findViewById( R.id.txtViewForgotPassword );
-     EditText email;//=findViewById( R.id.ETemail );
-     EditText password;//=findViewById( R.id.ETpassword );
+     TextView forgotPass;
+     Button createNewAccount;
+     EditText email;
+     EditText password;
      Button btnLogin;
     List<AddUser> shfrytezuesit;
     DatabaseReference databaseUsers;
@@ -53,7 +56,22 @@ public class LoginActivity extends AppCompatActivity {
         email=(EditText) findViewById( R.id.ETemail );
         password=(EditText) findViewById( R.id.ETpassword );
         btnLogin=(Button) findViewById( R.id.btnLogin );
+        createNewAccount=(Button) findViewById( R.id.btnCreate_new_Account );
 
+        Runnable r=new Runnable() {
+            @Override
+            public void run() {
+                createNewAccount.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(getApplicationContext(), RegistrationActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+        };
+        Thread t1=new Thread(r);
+        t1.start();
 
 
         SQLiteDatabase db=(new Databaza(LoginActivity.this)).getReadableDatabase();
@@ -73,20 +91,36 @@ public class LoginActivity extends AppCompatActivity {
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (email.getText().toString().equals("")) {
+                        email.setError("Username is required!");
+                        email.requestFocus();
+                        return;
+                    }
+                    if (password.getText().toString().equals("")) {
+                        password.setError("Password is required!");
+                        password.requestFocus();
+                        return;
+                    }
 
                     SQLiteDatabase db=(new Databaza(LoginActivity.this)).getReadableDatabase();
-                    Cursor c_2=db.rawQuery("select* from Perdoruesit3 where Perdoruesi='"+"vegimik_1"+"' and Passwordi='"+"123456"+"'", null);
+                    Cursor c_2=db.rawQuery("select* from Perdoruesit3 where Perdoruesi='"+email.getText().toString()+"' and Passwordi='"+password.getText().toString()+"'", null);
                     c_2.moveToLast();
                     int counter_2=c_2.getCount();
                     if (counter_2>0)
                     {
+                        ContentValues contentValues=new ContentValues();
+                        contentValues.put("Aktiv",1);
+                        db.update("Perdoruesit3",contentValues,"Perdoruesi='"+email.getText().toString()+"' and Passwordi='"+password.getText().toString()+"'",null);
                         Intent intent=new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Username or Password, or both of them are wrong.", Toast.LENGTH_LONG).show();
                     }
 
                 }
             });
-
 
         }
 
@@ -112,6 +146,24 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
         */
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode)
+        {
+            case KeyEvent.KEYCODE_HOME:
+                Toast.makeText(getApplicationContext(), "Home button presed", Toast.LENGTH_LONG).show();
+                break;
+            case KeyEvent.KEYCODE_BACK:
+                Toast.makeText(getApplicationContext(), "Back button presed", Toast.LENGTH_LONG).show();
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+                break;
+
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     private void updateUI(FirebaseUser currentUser) {
