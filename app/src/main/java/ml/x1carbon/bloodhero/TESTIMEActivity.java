@@ -11,8 +11,8 @@ public class TESTIMEActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_testime);
 
-//        getActionBar().setDisplayShowHomeEnabled(true);
-//        getActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
     }
 }

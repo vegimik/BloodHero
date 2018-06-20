@@ -34,7 +34,7 @@ public class StartApp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_start_app );
+//        setContentView( R.layout.activity_start_app );
 
         btn1=(Button)findViewById(R.id.button2);
 
@@ -63,7 +63,7 @@ public class StartApp extends AppCompatActivity {
 
 
 
-
+/*
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,13 +75,24 @@ public class StartApp extends AppCompatActivity {
         });
 
 
-
+*/
 
 
         databaseUsers = FirebaseDatabase.getInstance().getReference("user");
         shfrytezuesit = new ArrayList<>();
         databaseUsers.keepSynced(true);
 
+    }
+
+    @Override
+    protected void onResume() {
+//        Intent intent=new Intent(getApplicationContext(), StartApp.class);
+//        startActivity(intent);
+        Toast.makeText(getApplicationContext(),"Vegimi qetu duhet me punu", Toast.LENGTH_LONG).show();
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+        super.onResume();
     }
 
     @Override

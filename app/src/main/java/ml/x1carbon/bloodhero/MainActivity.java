@@ -1,11 +1,18 @@
 package ml.x1carbon.bloodhero;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -20,6 +27,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -34,17 +42,16 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private ListView resultview;
-
+    TextView usernameDesign;
     List<AddEntry> artists;
     DatabaseReference databaseArtists;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        getSupportActionBar().hide();
-//        getActionBar().hide();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -70,6 +77,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
+
     }
 
     @Override
@@ -136,6 +147,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+        TestAsync objTaskAsync=new TestAsync();
+        objTaskAsync.execute();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode)
+        {
+            case KeyEvent.KEYCODE_HOME:
+                Toast.makeText(getApplicationContext(), "Home button presed", Toast.LENGTH_LONG).show();
+                break;
+            case KeyEvent.KEYCODE_BACK:
+                Toast.makeText(getApplicationContext(), "Back button presed", Toast.LENGTH_LONG).show();
+                moveTaskToBack(true);
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
+                break;
+
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
@@ -165,6 +197,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId())
         {
+            case R.id.profile_amd:
+                Intent profile=new Intent(MainActivity.this, Dashboard.class);
+                startActivity(profile);
+                break;
+
             case R.id.dashboard_amd:
                 Intent home=new Intent(MainActivity.this, Dashboard.class);
                 startActivity(home);
@@ -213,17 +250,60 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                Intent notify=new Intent(MainActivity.this,Notifications.class);
 //                startActivity(notify);
                 break;
-            case R.id.useradd_amd:
-                Intent useradd=new Intent(MainActivity.this, RegistrationActivity.class);
-                startActivity(useradd);
+            case R.id.log_out_amd:
+                AlertDialog.Builder alertDialoBuilder=new AlertDialog.Builder(this);
+                alertDialoBuilder.setTitle("Logout:");
+                alertDialoBuilder.setMessage("Are you sure you want to log out?");
+                alertDialoBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent logOutIntent=new Intent(MainActivity.this, LoginActivity.class);
+                        SQLiteDatabase db=(new Databaza(MainActivity.this)).getWritableDatabase();
+                        ContentValues cv3=new ContentValues();
+                        cv3.put("Aktiv",0);
+                        db.update("Perdoruesit3",cv3,"Aktiv="+1,null);
+                        startActivity(logOutIntent);
+                    }
+                });
+                alertDialoBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                alertDialoBuilder.show();
+
                 break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
     }
 
+    public class TestAsync extends AsyncTask<Void, Void, Void>
+    {
+
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+           SystemClock.sleep(3000);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            Log.i("aaa","wego");
+//            Toast.makeText(getApplicationContext(), "ketu e vendosim ndryshimin", Toast.LENGTH_LONG).show();
+            super.onProgressUpdate(values);
+        }
+    }
 
 
 }

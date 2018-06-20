@@ -78,6 +78,18 @@
 
 
             <Button
+                android:id="@+id/btnCreate_new_Account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="@color/white"
+                android:padding="16dp"
+                android:layout_marginBottom="-10dp"
+                android:text="Create new account!" />
+
+            <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

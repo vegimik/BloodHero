@@ -43,14 +43,6 @@ public class RegistrationActivity extends Activity {
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
 
-
-
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,6 +123,53 @@ public class RegistrationActivity extends Activity {
                 }
                 else
                 {
+                    if (sname.isEmpty()) {
+                    givenname.setError("Name is required!");
+                    givenname.requestFocus();
+                    return;
+
+                }
+
+                if (ssurname.isEmpty()) {
+                    surname.setError("Surname is required");
+                    surname.requestFocus();
+                    return;
+                }
+
+                if (sphone.isEmpty())
+                {
+                    phone.setError("Phone number is required!");
+                    phone.requestFocus();
+                    return;
+                }
+
+                if (semail.isEmpty())
+                {
+                    email.setError("Email credentials are required!");
+                    email.requestFocus();
+                    return;
+                }
+
+                 if (sloginname.isEmpty())
+                 {
+                    loginName.setError("Login credentials are required!");
+                    loginName.requestFocus();
+                    return;
+                 }
+                 if (spassword.isEmpty())
+                 {
+                    password.setError("Login credentials are required!");
+                    password.requestFocus();
+                    return;
+                 }
+
+                if (sconfirmPass.isEmpty()|| !sconfirmPass.equals(spassword))
+                {
+                    confirmPassword.setError("Login credentials are required or isnt valid!");
+                    confirmPassword.requestFocus();
+                    return;
+                }
+
                     String id = mFirebaseDatabase.push().getKey();
 
                     AddUser useri=new AddUser(sname, ssurname, "10/10/2018", genderMF, sspinner, sphone, semail, sstreetname, ssuburb, scity, spostcode, sloginname, spassword, id);
@@ -142,7 +181,7 @@ public class RegistrationActivity extends Activity {
                     cv.put("Perdoruesi", sloginname);
                     cv.put("Passwordi", spassword);
                     cv.put("Aktiv", "0");
-                    long rezultati = db.insert("Perdoruesit1",null,cv);
+                    long rezultati = db.insert("Perdoruesit3",null,cv);
                     if(rezultati>0)
                         Toast.makeText(RegistrationActivity.this, "Te dhenat u ruajten me sukses ne SQLiteDatabase!", Toast.LENGTH_LONG).show();
 
