@@ -11,16 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
+
         <TextView
-            android:gravity="center"
-            android:layout_marginTop="10dp"
             android:id="@+id/dat"
-            android:text="Register as Donar"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:textColor="#FFF"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Register"
+            android:textColor="#FFF"
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
     </android.support.design.widget.AppBarLayout>
 

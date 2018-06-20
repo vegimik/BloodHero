@@ -150,6 +150,15 @@ public class RegistrationActivity extends Activity {
                     return;
                 }
 
+
+
+                if (!Patterns.EMAIL_ADDRESS.matcher( semail ).matches()) {
+
+                email.setError("Email format is not correct");
+                email.requestFocus();
+
+                }
+
                  if (sloginname.isEmpty())
                  {
                     loginName.setError("Login credentials are required!");
@@ -162,6 +171,31 @@ public class RegistrationActivity extends Activity {
                     password.requestFocus();
                     return;
                  }
+
+//                        if (!spassword.isEmpty()) {
+//                        Pattern regexPattern;
+//                        Matcher regMatcher;
+//                        regexPattern = Pattern.compile("(?=.*[a-z])(?=.*d)(?=.*[~!@#$%^&*_])(?=.*[A-Z]).{6,16}");
+//                        regMatcher = regexPattern.matcher(spassword);
+//                        if (!regMatcher.matches()) {
+//                        password.setError("Passord must be 6-16 characters,must contain at least one capital letter, a number and a special character (ex:~!@#$%^&*_)");
+//                        password.requestFocus();
+//                        return;
+//                        }
+//                        } else
+
+                        if (spassword.isEmpty()) {
+                        password.setError("Password is required!");
+                        password.requestFocus();
+                        return;
+                        }
+
+                        if(!spassword.equals(sconfirmPass))
+                        {
+                        confirmPassword.setError("Password is not confirmed!");
+                        confirmPassword.requestFocus();
+                        return;
+                        }
 
                 if (sconfirmPass.isEmpty()|| !sconfirmPass.equals(spassword))
                 {
@@ -323,7 +357,7 @@ public class RegistrationActivity extends Activity {
 
 
 
-/// ARBERI
+
 //
 //
 //

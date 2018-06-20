@@ -20,7 +20,8 @@
             android:name=".AddNew"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.ActionBar" />
-        <activity android:name=".Main2Activity" />
+        <activity android:name=".Z_PER_TESTIMMain2Activity" />
+
         <activity
             android:name=".BloodChartsActivity"
             android:parentActivityName=".Dashboard"
@@ -37,7 +38,7 @@
             android:name=".Dashboard"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.ActionBar" />
-        <activity android:name=".StartApp"></activity>
+        <activity android:name=".Z_PER_TESTIMStartApp"></activity>
         <activity
             android:name=".WhoCanDonate"
             android:parentActivityName=".Dashboard"

@@ -176,4 +176,12 @@ tools:context=".ViewEntries">
 
 </ScrollView>
 
+    <Button
+        android:id="@+id/btnCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="16dp"
+        android:text="Call" />
+
 </LinearLayout>

@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                     Cursor c_2=db.rawQuery("select* from Perdoruesit3 where Perdoruesi='"+email.getText().toString()+"' and Passwordi='"+password.getText().toString()+"'", null);
                     c_2.moveToLast();
                     int counter_2=c_2.getCount();
-                    if (counter_2>0)
+                    if (counter_2==1)
                     {
                         ContentValues contentValues=new ContentValues();
                         contentValues.put("Aktiv",1);

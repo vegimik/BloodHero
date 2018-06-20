@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -63,6 +64,7 @@ public class AddNew extends AppCompatActivity {
                 phone.setText(userActiv.getmUphone());
                 spinner.setSelection(calculateSpinnerPosition(userActiv.getmUspinner()));
                 city.setText(userActiv.getmUcity());
+                phone.setText(userActiv.getmUphone());
             }
         });
 
@@ -75,17 +77,27 @@ public class AddNew extends AppCompatActivity {
                 String sphone=phone.getText().toString();
                 String scity=city.getText().toString();
                 String sdesc=desc.getText().toString();
+
                 if (sname.equals(""))
                 {
                     name.setError("Name is required!");
                     name.requestFocus();
                     return;
                 }
+
                String id = mFirebaseDatabase.push().getKey();
                 AddEntry artist = new AddEntry(sname,sphone,scity,sblood,sdesc,id);
                 mFirebaseDatabase.child(id).setValue(artist);
+                Snackbar snackbar= Snackbar.make(findViewById(R.id.listAddNew), "Registered", Snackbar.LENGTH_LONG).setAction("Retry", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Write Your Code here
+                    }
+                });
+                snackbar.show();
                 Intent home=new Intent(AddNew.this,MainActivity.class);
                 startActivity(home);
+
                 finish();
             }
         });

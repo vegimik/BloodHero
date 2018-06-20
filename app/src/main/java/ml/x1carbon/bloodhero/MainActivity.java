@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView usernameDesign;
     List<AddEntry> artists;
     DatabaseReference databaseArtists;
+    Button btnNotification;
 
 
     @Override
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);//per momentin nuk eshte aktiv
         //setSupportActionBar(toolbar);
         databaseArtists = FirebaseDatabase.getInstance().getReference("messages");
         artists = new ArrayList<>();
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Per Nitification
 
 
 
@@ -182,19 +185,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -217,43 +217,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(home);
                 break;
             case R.id.ap:
-                Intent pt=new Intent(MainActivity.this,Tags.class);
-                pt.putExtra("tag","A+");
+                Intent apIntent=new Intent(MainActivity.this,Tags.class);
+                apIntent.putExtra("tag","A+");
                 break;
             case R.id.an:
-                Intent gen=new Intent(MainActivity.this,Tags.class);
-                gen.putExtra("tag","A-");
-                startActivity(gen);
+                Intent anIntent=new Intent(MainActivity.this,Tags.class);
+                anIntent.putExtra("tag","A-");
+                startActivity(anIntent);
                 break;
             case R.id.bp:
-                Intent fun=new Intent(MainActivity.this,Tags.class);
-                fun.putExtra("tag","B+");
-                startActivity(fun);
+                Intent bpIntent=new Intent(MainActivity.this,Tags.class);
+                bpIntent.putExtra("tag","B+");
+                startActivity(bpIntent);
                 break;
             case R.id.bn:
-                Intent dress=new Intent(MainActivity.this,Tags.class);
-                dress.putExtra("tag","B-");
-                startActivity(dress);
+                Intent bnIntent=new Intent(MainActivity.this,Tags.class);
+                bnIntent.putExtra("tag","B-");
+                startActivity(bnIntent);
                 break;
             case R.id.op:
-                Intent furniture=new Intent(MainActivity.this,Tags.class);
-                furniture.putExtra("tag","O+");
-                startActivity(furniture);
+                Intent opIntent=new Intent(MainActivity.this,Tags.class);
+                opIntent.putExtra("tag","O+");
+                startActivity(opIntent);
                 break;
             case R.id.on:
-                Intent place=new Intent(MainActivity.this,Tags.class);
-                place.putExtra("tag","O-");
-                startActivity(place);
+                Intent onIntent=new Intent(MainActivity.this,Tags.class);
+                onIntent.putExtra("tag","O-");
+                startActivity(onIntent);
                 break;
             case R.id.abp:
-                Intent con=new Intent(MainActivity.this,Tags.class);
-                con.putExtra("tag","AB+");
-                startActivity(con);
+                Intent abIntent=new Intent(MainActivity.this,Tags.class);
+                abIntent.putExtra("tag","AB+");
+                startActivity(abIntent);
                 break;
             case R.id.abn:
-                Intent feed=new Intent(MainActivity.this,Tags.class);
-                feed.putExtra("tag","AB-");
-                startActivity(feed);
+                Intent abnIntent=new Intent(MainActivity.this,Tags.class);
+                abnIntent.putExtra("tag","AB-");
+                startActivity(abnIntent);
                 break;
             case R.id.notifications_amd:
                 Toast.makeText(getApplicationContext(),"Ska ende Notfication", Toast.LENGTH_LONG).show();
@@ -305,12 +305,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            Log.i("Test","test");
         }
 
         @Override
         protected void onProgressUpdate(Void... values) {
-            Log.i("aaa","wego");
-//            Toast.makeText(getApplicationContext(), "ketu e vendosim ndryshimin", Toast.LENGTH_LONG).show();
+
             super.onProgressUpdate(values);
         }
     }

@@ -36,9 +36,7 @@ public class Tags extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tags);
         Intent i=this.getIntent();
-        //-------------------add mob-------------------//
 
-        //---------------------------------------------//
         name=i.getExtras().getString("tag");
         databaseArtists = FirebaseDatabase.getInstance().getReference("messages");
         artists = new ArrayList<>();
