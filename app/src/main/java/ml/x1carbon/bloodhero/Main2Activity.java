@@ -1,7 +1,6 @@
 package ml.x1carbon.bloodhero;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -29,7 +28,7 @@ public class Main2Activity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Main2Activity.this, TESTIMEActivity.class);
+                Intent intent=new Intent(Main2Activity.this, Z_PER_TESTIMEActivity.class);
                 startActivity(intent);
             }
         });

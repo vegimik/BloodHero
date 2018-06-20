@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StartApp extends AppCompatActivity {
+public class Z_PER_TESTIMStartApp extends AppCompatActivity {
 
     Button btn1;
     Boolean vlera=true;
@@ -34,11 +34,11 @@ public class StartApp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-//        setContentView( R.layout.activity_start_app );
+        setContentView( R.layout.activity_start_app );
 
         btn1=(Button)findViewById(R.id.button2);
 
-        SQLiteDatabase db=(new Databaza(StartApp.this)).getReadableDatabase();
+        SQLiteDatabase db=(new Databaza(Z_PER_TESTIMStartApp.this)).getReadableDatabase();
         Cursor c=db.rawQuery("select* from Perdoruesit3 ", null);
         c.moveToLast();
         final int counter=c.getCount();
@@ -77,11 +77,11 @@ public class StartApp extends AppCompatActivity {
 
 */
 
-
+/*
         databaseUsers = FirebaseDatabase.getInstance().getReference("user");
         shfrytezuesit = new ArrayList<>();
         databaseUsers.keepSynced(true);
-
+*/
     }
 
     @Override
@@ -98,6 +98,7 @@ public class StartApp extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        /*
         databaseUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -121,6 +122,8 @@ public class StartApp extends AppCompatActivity {
 
             }
         });
+
+        */
 
 
 

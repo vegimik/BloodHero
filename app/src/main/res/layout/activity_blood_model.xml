@@ -42,6 +42,7 @@
         </LinearLayout>
         <ImageView
             android:id="@+id/imageL"
+            android:src="@drawable/ic_invert_colors_black_24dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

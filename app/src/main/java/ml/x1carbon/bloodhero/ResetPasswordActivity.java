@@ -16,7 +16,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_testime);
 
         Intent intent=getIntent();
         String name=intent.getStringExtra( "name" );

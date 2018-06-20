@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     String permbajtjaDatabaze="";
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
-
+    int counter=0;
 
 
     @Override
@@ -77,9 +77,9 @@ public class LoginActivity extends AppCompatActivity {
         SQLiteDatabase db=(new Databaza(LoginActivity.this)).getReadableDatabase();
         Cursor c=db.rawQuery("select* from Perdoruesit3 where Aktiv="+1, null);
         c.moveToLast();
-        int counter=c.getCount();
+        counter=c.getCount();
         Log.i("Userat",String.valueOf(counter));
-        if (counter>0)
+        if (counter==1)
         {
             Intent intent=new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
@@ -126,11 +126,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
     }
 
 
@@ -149,6 +144,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode)
         {
@@ -156,6 +156,8 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Home button presed", Toast.LENGTH_LONG).show();
                 break;
             case KeyEvent.KEYCODE_BACK:
+                MainActivity ma=new MainActivity();
+                ma.setStop();
                 Toast.makeText(getApplicationContext(), "Back button presed", Toast.LENGTH_LONG).show();
                 moveTaskToBack(true);
                 android.os.Process.killProcess(android.os.Process.myPid());
@@ -170,8 +172,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
-    //Nje metode per autentikim me Firebase
+    //Nje metode per autentikim me Firebase-method
     private void logimi(String semail, String spassword)//po se ato i marr prej textboxave op qe man
     { mAuth.signInWithEmailAndPassword(semail, spassword)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -196,6 +197,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 }
+
+
+
+
+
+
 
 
 

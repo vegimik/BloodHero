@@ -32,10 +32,7 @@ public class AddNew extends AppCompatActivity {
     String pershkrimi="";
     private String userNAME="";
     Button btnTestFetch;
-    EditText name;
-    EditText phone;
-    EditText city;
-    EditText desc;
+    EditText name,phone,city,desc;
     Spinner spinner;
 
     @Override
@@ -74,10 +71,16 @@ public class AddNew extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String sname=name.getText().toString();
-               String sblood=spinner.getSelectedItem().toString();
-               String sphone=phone.getText().toString();
+                String sblood=spinner.getSelectedItem().toString();
+                String sphone=phone.getText().toString();
                 String scity=city.getText().toString();
                 String sdesc=desc.getText().toString();
+                if (sname.equals(""))
+                {
+                    name.setError("Name is required!");
+                    name.requestFocus();
+                    return;
+                }
                String id = mFirebaseDatabase.push().getKey();
                 AddEntry artist = new AddEntry(sname,sphone,scity,sblood,sdesc,id);
                 mFirebaseDatabase.child(id).setValue(artist);

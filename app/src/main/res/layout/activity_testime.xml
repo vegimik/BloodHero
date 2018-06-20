@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TESTIMEActivity">
+    tools:context=".Z_PER_TESTIMEActivity">
 
     <TextView
         android:id="@+id/textView2"

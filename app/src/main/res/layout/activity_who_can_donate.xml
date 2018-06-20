@@ -1,36 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WhoCanDonateActivity">
+    tools:context=".WhoCanDonate">
 
-
-
-
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="143dp"
-                app:layout_constraintDimensionRatio="16:9"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/whocandonate" />
-
-    <TextView
-
-        android:id="@+id/whocan"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
-        android:text="@string/you_can_give_blood"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="You can give Blood if:"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="1. You are fit and healthy \n
+2. You are aged 16-70 \n
+3. Your weight  more than 45kg \n
+4. You are taking anti depressants at the normal prescribed dose \n
+5. You take blood pressure medicine and your blood pressure is stabile \n"/>
 
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="You cant give Blood if:"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="1. You are under the influence of alcohol \n
+2. You are taking antibiotics \n
+3. You are pregnant or breastfeeding \n
+4. You have Cold or Flu \n
+5. You have been in prison in last 12 months \n
+6. You have ever injected a recreational drugs \n
+7. Had HIV \n
+8. Had hepatitis C \n
+9. Had syphilis \n
+10. Had human t-lymphotropics virus (HTLV) \n
+"/>
 
 
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

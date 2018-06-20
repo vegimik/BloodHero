@@ -153,6 +153,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode)
         {
@@ -257,11 +267,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 alertDialoBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent logOutIntent=new Intent(MainActivity.this, LoginActivity.class);
                         SQLiteDatabase db=(new Databaza(MainActivity.this)).getWritableDatabase();
                         ContentValues cv3=new ContentValues();
                         cv3.put("Aktiv",0);
                         db.update("Perdoruesit3",cv3,"Aktiv="+1,null);
+                        Intent logOutIntent=new Intent(MainActivity.this, LoginActivity.class);
                         startActivity(logOutIntent);
                     }
                 });
@@ -303,6 +313,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            Toast.makeText(getApplicationContext(), "ketu e vendosim ndryshimin", Toast.LENGTH_LONG).show();
             super.onProgressUpdate(values);
         }
+    }
+
+    public void setDestroy()
+    {
+        onDestroy();
+    }
+
+    public void setStop()
+    {
+        onStop();
     }
 
 

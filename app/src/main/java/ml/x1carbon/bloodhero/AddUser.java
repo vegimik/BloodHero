@@ -2,18 +2,10 @@ package ml.x1carbon.bloodhero;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
-/**
- */
+
 @IgnoreExtraProperties
 public class AddUser {
 
-
-//    private String mUName;
-//    private String mUSurname;
-//    private String mBPhone;
-//    private String mCCity;
-//    private String mDBlood;
-//    private String mEDescription;
 
     private String mUname;
     private String mUsurname;
@@ -116,116 +108,5 @@ public class AddUser {
     public String getmFId() {
         return mFId;
     }
-//    public String getmAName() {return mAName;}
-//    public String getmASurname() {return mASurname;}
-//    public String getmBPhone() {return mBPhone;}
-//    public String getmCCity() {return mCCity;  }
-//    public String getmDBlood() {
-//        return mDBlood;
-//    }
-//    public String getmEDescription() {return mEDescription;}
-//    public String getmId(){return mFId;}
-
-
-
-//    private String mAgivenname;
-//    private String mBsurname;
-//    private String mCdob;
-////    private String mDgender;
-//    private String mEbloodgroup;
-//    private String mFphone;
-//    private String mGemail;
-//    private String mHstreetname;
-//    private String mIsuburb;
-//    private String mJcity;
-//    private String mKpostcode;
-//    private String mLloginname;
-//    private String mMpassword;
-//    private String mNID;
-//
-//    public AddUser() {
-//
-//    }
-//
-//    public AddUser(String mAgivenname, String mBsurname, String mNID) {
-//        this.mAgivenname = mAgivenname;
-//        this.mBsurname = mBsurname;
-//        this.mNID = mNID;
-//    }
-//    public AddUser(String mAgivenname, String mBsurname, String mCdob,  String mEbloodgroup, String mFphone, String mGemail, String mHstreetname, String mIsuburb, String mJcity, String mKpostcode, String mLloginname, String mMpassword, String mNID) {
-//        this.mAgivenname = mAgivenname;
-//        this.mBsurname = mBsurname;
-//        this.mCdob = mCdob;
-////        this.mDgender = mDgender;
-//        this.mEbloodgroup = mEbloodgroup;
-//        this.mFphone = mFphone;
-//        this.mGemail = mGemail;
-//        this.mHstreetname = mHstreetname;
-//        this.mIsuburb = mIsuburb;
-//        this.mJcity = mJcity;
-//        this.mKpostcode = mKpostcode;
-//        this.mLloginname = mLloginname;
-//        this.mMpassword = mMpassword;
-//        this.mNID = mNID;
-//    }
-//
-//
-//    public String getmAgivenname() {
-//        return mAgivenname;
-//    }
-//
-//    public String getmBsurname() {
-//        return mBsurname;
-//    }
-//
-//    public String getmCdob() {
-//        return mCdob;
-//    }
-//
-////    public String getmDgender() {
-////        return mDgender;
-////    }
-//
-//    public String getmEbloodgroup() {
-//        return mEbloodgroup;
-//    }
-//
-//    public String getmFphone() {
-//        return mFphone;
-//    }
-//
-//    public String getmGemail() {
-//        return mGemail;
-//    }
-//
-//    public String getmHstreetname() {
-//        return mHstreetname;
-//    }
-//
-//    public String getmIsuburb() {
-//        return mIsuburb;
-//    }
-//
-//    public String getmJcity() {
-//        return mJcity;
-//    }
-//
-//    public String getmKpostcode() {
-//        return mKpostcode;
-//    }
-//
-//    public String getmLloginname() {
-//        return mLloginname;
-//    }
-//
-//    public String getmMpassword() {
-//        return mMpassword;
-//    }
-//    public String getmNID() {
-//        return mNID;
-//    }
-//
-//
-//
 
 }

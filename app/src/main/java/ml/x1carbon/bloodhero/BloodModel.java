@@ -15,12 +15,12 @@ import java.util.List;
 public class BloodModel extends ArrayAdapter<AddEntry> {
 
     private Activity context;
-    List<AddEntry> artists;
+    List<AddEntry> user_d_r;
 
-    public BloodModel(Activity context, List<AddEntry> artists) {
-        super(context, R.layout.activity_blood_model, artists);
+    public BloodModel(Activity context, List<AddEntry> usersL) {
+        super(context, R.layout.activity_blood_model, usersL);
         this.context = context;
-        this.artists = artists;
+        this.user_d_r = usersL;
     }
 
 
@@ -33,7 +33,7 @@ public class BloodModel extends ArrayAdapter<AddEntry> {
         TextView textViewGenre = (TextView) listViewItem.findViewById(R.id.mDate);
         TextView textViewTag = (TextView) listViewItem.findViewById(R.id.Tags);
 
-        AddEntry artist = artists.get(position);
+        AddEntry artist = user_d_r.get(position);
         textViewName.setText(artist.getmAName());
         textViewGenre.setText(artist.getmDBlood());
         textViewTag.setText(artist.getmBPhone());

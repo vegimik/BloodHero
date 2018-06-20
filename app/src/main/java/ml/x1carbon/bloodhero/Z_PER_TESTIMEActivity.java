@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class TESTIMEActivity extends AppCompatActivity {
+public class Z_PER_TESTIMEActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

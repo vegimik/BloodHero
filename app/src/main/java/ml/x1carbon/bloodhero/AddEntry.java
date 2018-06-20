@@ -2,8 +2,6 @@ package ml.x1carbon.bloodhero;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
-/**
- */
 @IgnoreExtraProperties
 public class AddEntry {
     private String mAName;
