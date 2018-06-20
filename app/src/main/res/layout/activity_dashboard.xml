@@ -19,8 +19,8 @@
             android:id="@+id/btnrequest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:foreground="@drawable/ic_dashboard_black_24dp"
-            android:background="@color/fbutton_color_pomegranate"
+            android:foreground="@drawable/bloodrequest"
+            android:background="@color/colorPrimaryDark"
             android:paddingTop="16dp"
             android:padding="6dp"
             android:layout_margin="2dp"
@@ -28,8 +28,8 @@
             />
 
         <Button
-            android:foreground="@drawable/ic_dashboard_black_24dp"
-            android:background="@color/fbutton_color_pomegranate"
+            android:foreground="@drawable/blooddonation"
+            android:background="@color/colorPrimaryDark"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:paddingTop="16dp"
@@ -60,8 +60,8 @@
         android:weightSum="2">
 
         <Button
-            android:foreground="@drawable/ic_dashboard_black_24dp"
-            android:background="@color/fbutton_color_pomegranate"
+            android:foreground="@drawable/medicalhistory"
+            android:background="@color/colorPrimaryDark"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:id="@+id/adBtnStatistic"
@@ -73,7 +73,7 @@
 
 
         <Button
-            android:foreground="@drawable/ic_dashboard_black_24dp"
+            android:foreground="@drawable/healthcare"
             android:background="@color/colorPrimary"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
@@ -102,8 +102,8 @@
 
 
         <Button
-            android:foreground="@drawable/ic_dashboard_black_24dp"
-            android:background="@color/fbutton_color_pomegranate"
+            android:foreground="@drawable/bloodneed"
+            android:background="@color/colorPrimaryDark"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:paddingTop="16dp"
@@ -115,8 +115,8 @@
 
         <Button
             android:id="@+id/amazingstories"
-            android:foreground="@drawable/ic_dashboard_black_24dp"
-            android:background="@color/fbutton_color_pomegranate"
+            android:foreground="@drawable/heart"
+            android:background="@color/colorPrimaryDark"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:paddingTop="16dp"
