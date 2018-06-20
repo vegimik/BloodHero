@@ -9,27 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".SearchByCity" />
-        <activity android:name=".Tags"/>
+        <activity android:name=".Tags" />
         <activity
             android:name=".ViewEntries"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.ActionBar"/>
-        <activity android:name=".AddNew"
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity
+            android:name=".AddNew"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.ActionBar"/>
+            android:theme="@style/AppTheme.ActionBar" />
         <activity android:name=".Main2Activity" />
-        <activity android:name=".RegistrationActivity">
-
-        </activity>
-        <activity android:name=".LoginActivity" >
-
-        </activity>
-        <activity android:name=".Dashboard"
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".Dashboard"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.ActionBar"/>
-
+            android:theme="@style/AppTheme.ActionBar" />
         <activity android:name=".StartApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +34,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".WhoCanDonateActivity" />
+
+        <receiver android:name=".NewCaseWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/new_case_widget_info" />
+        </receiver>
     </application>
 
 </manifest>

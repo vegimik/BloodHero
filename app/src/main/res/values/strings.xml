@@ -42,6 +42,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="you_can_give_blood">You can give blood if:</string>
 
 
     <!--<string name="action_sign_in_short">Register</string>-->
@@ -72,5 +73,7 @@
     <string name="btn_sign_out">Sign Out</string>
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
+    <string name="appwidget_text">Request blood for you</string>
+    <string name="add_widget">Add blood request for you widget</string>
 
 </resources>
